@@ -4,31 +4,7 @@
 
 === Contributors
 
-* Carl Schwope
 * Lindsay Nauman
-* Beth Tenorio
+* Carl Schwope
 * Kevin Sun
-
-=== Please add your name
-
-It is important that we follow a convension when collaborting with github.
-The most important thing is that we never push directly to the master branch here.
-It also helps if you never edit the files on your own master branch.  Only edit files on a feature branch.
-
-I decided that adding your name to the repo would be a good first exersice
-
-* Fork this repo, and clone your fork onto your computer
-* checkout a feature branch and add your name to this README.rdoc
-* commit the changes, and push that branch to github: 'git push origin feature-branch'
-* go to github and open a pull request.
-* When the pull request is accepted, you can safely delete your feature branch from github
-* back in the terminal switch to the master branch
-* type 'git remote add upstream https://github.com/Lowest0ne/food_truck_review.git'
-* type 'git fetch upstream'
-* type 'git merge upstream/master'
-* Your master branch should now include your name in the README
-* to verify this, typing 'git merge feature-branch' should result in something like 'up to date'
-* You can safely delete your feature branch
-* type 'git push' to update your repo on github
-
-I know that is a lot of steps, but by following these conventions, we will reduce the chances of breaking things
+* Beth Tenorio

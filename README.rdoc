@@ -6,6 +6,7 @@
 
 * Carl Schwope
 * Lindsay Nauman
+* Kevin Sun
 
 === Please add your name
 

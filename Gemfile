@@ -31,8 +31,13 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'simple_form'
   gem 'valid_attribute'
+  gem 'capybara'
+  gem 'pry-rails'
+  gem 'launchy'
+  gem 'shoulda-matchers'
+  gem 'factory_girl'
+  gem 'quiet_assets'
 end
 
 # Use ActiveModel has_secure_password
@@ -46,3 +51,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'zurb-foundation'
+gem 'simple_form'
+gem 'devise'

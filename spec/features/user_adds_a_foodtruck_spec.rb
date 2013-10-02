@@ -21,7 +21,7 @@ feature 'user adds a foodtruck to be reviewed', %Q{
 
     food_truck_count = FoodTruck.count
     visit new_food_truck_path
-    fill_in 'Truck name', with: 'Chicken and Rice'
+    fill_in 'Name', with: 'Chicken and Rice'
     fill_in 'City', with: 'Boston'
 
     fill_in 'Picture', with: 'some picture here'

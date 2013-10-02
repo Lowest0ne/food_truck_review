@@ -21,6 +21,6 @@ class FoodTrucksController < ApplicationController
   private
 
   def food_truck_params
-    params.require(:food_truck).permit(:truck_name, :city, :picture, :description, :food_category)
+    params.require(:food_truck).permit(:name, :city, :picture, :description, :food_category)
   end
 end

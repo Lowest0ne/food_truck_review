@@ -9,7 +9,7 @@ FactoryGirl.define do
   end
 
   factory :food_truck do
-    truck_name 'Chicken n Rice'
+    name'Chicken n Rice'
     city 'Boston'
     picture 'image1.jpg'
     food_category 'Fast food'

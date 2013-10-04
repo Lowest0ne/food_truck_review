@@ -5,15 +5,18 @@ FoodTruckReview::Application.routes.draw do
 
   root 'pages#home'
 
+  resources :food_trucks do
+    resources :reviews
+    resources :votes
+  end
+
+  resources :users, only: [:show, :update]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  resources :food_trucks do
-    resources :reviews
-    resources :votes
-  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

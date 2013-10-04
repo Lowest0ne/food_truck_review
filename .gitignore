@@ -16,3 +16,7 @@
 
 # Ignore secret file
 /.secret_keys.json
+
+# Ignore the images we upload ( since the folder they are in is specific to
+# our database )
+/public/uploads

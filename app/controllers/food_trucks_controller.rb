@@ -18,6 +18,10 @@ class FoodTrucksController < ApplicationController
     @food_truck = FoodTruck.find(params[:id])
   end
 
+  def index
+    @food_trucks = FoodTruck.all
+  end
+
   private
 
   def food_truck_params

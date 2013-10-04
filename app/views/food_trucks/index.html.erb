@@ -1,0 +1,7 @@
+<h1>All the food trucks</h1>
+
+<ul>
+  <% @food_trucks.each do |food_truck| %>
+    <%= content_tag :li, food_truck.name%>
+  <% end %>
+</ul>

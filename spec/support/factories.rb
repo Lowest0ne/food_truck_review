@@ -9,7 +9,7 @@ FactoryGirl.define do
   end
 
   factory :food_truck do
-    name'Chicken n Rice'
+    sequence(:name){|n|"food truck #{n}"}
     city 'Boston'
     picture 'image1.jpg'
     food_category 'Fast food'

@@ -1,3 +1,7 @@
+<% @review.errors.full_messages.each do | error | %>
+  <%= content_tag :p, error %>
+<% end %>
+
 <%= simple_form_for([@truck, @review]) do |f| %>
   <%= f.input :body %>
   <%= f.collection_radio_buttons :is_good, [[true, 'Good'], [false, 'Bad']], :first, :last %>

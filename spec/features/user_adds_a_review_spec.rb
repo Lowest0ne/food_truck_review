@@ -41,25 +41,48 @@ feature 'user reviews and rates a food truck', %Q{
 
   end
 
-  scenario 'user does not provide the required information' do
-    user = FactoryGirl.create(:user)
-    truck = FactoryGirl.create(:food_truck)
+  describe 'user does not provide the required information' do
+    scenario 'User provides no information' do
 
-    prev_count = Review.count
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+      user = FactoryGirl.create(:user)
+      truck = FactoryGirl.create(:food_truck)
 
-    visit new_food_truck_review_path(truck)
+      prev_count = Review.count
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Sign In'
 
-    click_on 'Create Review'
+      visit new_food_truck_review_path(truck)
 
-    expect(Review.count).to eql(prev_count)
-    expect(page).to have_content("can't be blank")
+      click_on 'Create Review'
 
+      expect(Review.count).to eql(prev_count)
+      expect(page).to have_content("can't be blank")
+
+    end
+    scenario 'User provides body, but no is_good' do
+
+      user = FactoryGirl.create(:user)
+      truck = FactoryGirl.create(:food_truck)
+
+      prev_count = Review.count
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Sign In'
+
+      visit new_food_truck_review_path(truck)
+
+      fill_in 'Body', with: 'SOOOOO GOOOD'
+
+      click_on 'Create Review'
+
+      expect(Review.count).to eql(prev_count)
+      expect(page).to have_content("must be filled")
+
+    end
   end
-
   scenario 'User cancels making a review' do
     truck = FactoryGirl.create(:food_truck)
 
@@ -69,4 +92,7 @@ feature 'user reviews and rates a food truck', %Q{
 
     expect(page).to have_content(truck.name)
   end
+
+
+
 end

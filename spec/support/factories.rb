@@ -24,5 +24,11 @@ FactoryGirl.define do
     is_good true
   end
 
+  factory :vote do
+    user
+    food_truck
+    voted_up true
+  end
+
 end
 

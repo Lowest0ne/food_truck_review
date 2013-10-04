@@ -1,4 +1,6 @@
 FoodTruckReview::Application.routes.draw do
+  get "votes/new"
+  get "vote/new"
   devise_for :users
 
   root 'pages#home'
@@ -10,6 +12,7 @@ FoodTruckReview::Application.routes.draw do
   # root 'welcome#index'
   resources :food_trucks do
     resources :reviews
+    resources :votes
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

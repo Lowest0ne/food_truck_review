@@ -5,6 +5,11 @@ class FoodTruck < ActiveRecord::Base
   validates_presence_of :food_category
 
   has_many :reviews,
-    inverse_of: :food_truck
+    inverse_of: :food_truck,
+    dependent: :destroy
+
+  has_many :votes,
+    inverse_of: :food_truck,
+    dependent: :destroy
 
 end

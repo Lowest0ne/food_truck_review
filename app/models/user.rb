@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :reviews,
     inverse_of: :user
+
+  has_many :votes,
+    inverse_of: :user
 end

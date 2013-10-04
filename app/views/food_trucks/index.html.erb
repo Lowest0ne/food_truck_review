@@ -2,6 +2,6 @@
 
 <ul>
   <% @food_trucks.each do |food_truck| %>
-    <%= content_tag :li, food_truck.name%>
+    <li><%= link_to food_truck.name, food_truck_reviews_path(food_truck)%></li>
   <% end %>
 </ul>

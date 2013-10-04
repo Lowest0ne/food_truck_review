@@ -1,0 +1,19 @@
+<% if @food_truck %>
+  <h1><%= "#{@food_truck.name}'s Reviews" %></h1>
+<% end %>
+
+<table>
+  <tr>
+    <th>User name</th>
+    <th>Sweet Review</th>
+    <th>Is Good</th>
+  </tr>
+  <% @reviews.each do |review| %>
+  <tr>
+    <%= content_tag :td, review.user.full_name %>
+    <%= content_tag :td, review.body %>
+    <%= content_tag :td, ( review.is_good ? "I love it" : "I hate it" ) %>
+  </tr>
+  <% end %>
+</table>
+

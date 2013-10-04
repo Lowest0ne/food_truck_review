@@ -17,7 +17,8 @@ feature 'user reviews and rates a food truck', %Q{
     user = FactoryGirl.create(:user)
     truck = FactoryGirl.create(:food_truck)
 
-    prev_count = Review.count
+    total_count = Review.count
+    user_review_count = user.reviews.count
 
     visit new_user_session_path
     fill_in 'Email', with: user.email
@@ -26,16 +27,13 @@ feature 'user reviews and rates a food truck', %Q{
 
     visit new_food_truck_review_path(truck)
 
-
     fill_in 'Body', with: 'Totally awesome!'
     choose 'Good'
 
     click_on 'Create Review'
 
-    expect(Review.last.user_id).to eql(user.id)
-    expect(Review.last.food_truck_id).to eql(truck.id)
-
-    expect(Review.count).to eql(prev_count + 1)
+    expect(Review.count).to eql(total_count + 1)
+    expect( user.reviews.count ).to eql( user_review_count + 1 )
     expect(page).to have_content('Review is created successfully')
 
   end
@@ -43,7 +41,6 @@ feature 'user reviews and rates a food truck', %Q{
   scenario 'user does not provide the required information' do
     user = FactoryGirl.create(:user)
     truck = FactoryGirl.create(:food_truck)
-    review = FactoryGirl.create(:review)
 
     prev_count = Review.count
     visit new_user_session_path
@@ -54,9 +51,6 @@ feature 'user reviews and rates a food truck', %Q{
     visit new_food_truck_review_path(truck)
 
     click_on 'Create Review'
-
-    expect(Review.last.user_id).to_not eql(user.id)
-    expect(Review.last.food_truck_id).to_not eql(truck.id)
 
     expect(Review.count).to eql(prev_count)
     expect(page).to have_content("can't be blank")

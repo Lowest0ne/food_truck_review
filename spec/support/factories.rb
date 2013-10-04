@@ -14,12 +14,17 @@ FactoryGirl.define do
     picture 'image1.jpg'
     food_category 'Fast food'
 
+    factory :food_truck_with_reviews do
+      after(:create) do |food_truck|
+        FactoryGirl.create_list(:review, 5, food_truck: food_truck )
+      end
+    end
+
   end
 
   factory :review do
-    body 'I like it!'
-    user
-    food_truck
+    sequence(:body){|n|"I like it!#{n}"}
+    association :user
 
     is_good true
   end

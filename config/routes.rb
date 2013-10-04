@@ -5,9 +5,9 @@ FoodTruckReview::Application.routes.draw do
 
   root 'pages#home'
 
-  resources :food_trucks do
-    resources :reviews
-    resources :votes
+  resources :food_trucks, only: [:new, :create, :index, :show] do
+    resources :reviews, only: [:new, :create, :index ]
+    resources :votes, only: [:new, :create ]
   end
 
   resources :users, only: [:show, :update]

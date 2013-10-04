@@ -19,6 +19,16 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def index
+    if params[:food_truck_id]
+      @food_truck = FoodTruck.find( params[:food_truck_id] )
+      @reviews = Review.where( food_truck_id: @food_truck.id )
+    else
+      @food_truck = nil
+      @reviews = Review.all
+    end
+  end
+
   protected
   def review_params
     params.require(:review).permit(

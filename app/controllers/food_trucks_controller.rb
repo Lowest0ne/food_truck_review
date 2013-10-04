@@ -7,7 +7,7 @@ class FoodTrucksController < ApplicationController
     @food_truck = FoodTruck.new(food_truck_params)
     if @food_truck.save
       flash[:notice] = "You made a food truck"
-      redirect_to @food_truck
+      redirect_to food_truck_reviews_path(@food_truck)
     else
       flash[:notice] = "You failed to make a food truck"
       render new_food_truck_path

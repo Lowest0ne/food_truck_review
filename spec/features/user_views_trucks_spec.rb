@@ -13,5 +13,4 @@ feature 'user views trucks' do
     end
 
   end
-
 end

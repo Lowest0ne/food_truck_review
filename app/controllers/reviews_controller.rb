@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
 
     if @review.save
       flash[:notice] = 'Review is created successfully'
-      redirect_to new_food_truck_review_path(@truck)
+      redirect_to food_truck_reviews_path(@truck)
     else
       render :new
     end

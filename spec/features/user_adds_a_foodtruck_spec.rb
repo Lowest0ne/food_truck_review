@@ -20,7 +20,9 @@ feature 'user adds a foodtruck to be reviewed', %Q{
   scenario 'User creates successfully a foodtruck with correct info' do
 
     food_truck_count = FoodTruck.count
-    visit new_food_truck_path
+    visit food_trucks_path
+
+    click_on 'Add food truck'
     fill_in 'Name', with: 'Chicken and Rice'
     fill_in 'City', with: 'Boston'
 
@@ -31,6 +33,8 @@ feature 'user adds a foodtruck to be reviewed', %Q{
     expect(FoodTruck.count).to eql(food_truck_count + 1)
 
     expect(page).to have_content("You made a food truck")
+
+    expect(page).to have_content("Add review")
   end
 
  scenario 'User fails to make a foodtruck' do
@@ -43,4 +47,15 @@ feature 'user adds a foodtruck to be reviewed', %Q{
      expect(page).to have_content("You failed to make a food truck")
   end
 
+  scenario 'User cancels making a foodtruck' do
+
+    truck = FactoryGirl.create(:food_truck)
+
+    food_truck_count = FoodTruck.count
+    visit new_food_truck_path
+    click_on 'Cancel'
+    expect(FoodTruck.count).to eql(food_truck_count)
+
+    expect(page).to have_content(truck.name)
+  end
 end

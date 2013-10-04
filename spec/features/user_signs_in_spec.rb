@@ -31,8 +31,9 @@ feature 'user signs in',%Q{
     page.should_not have_content('Sign In')
     page.should_not have_content('Sign Up')
 
-    page.should have_content('Upload')
-
+    page.should_not have_content('Upload')
+    page.should have_content('My Profile')
+    page.should have_content('All the food trucks')
   end
 
   scenario 'registered users who forget passwords are not signed in' do

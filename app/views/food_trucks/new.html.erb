@@ -1,4 +1,4 @@
-<%= simple_form_for @food_truck do |f| %>
+<%= simple_form_for [current_user, @food_truck] do |f| %>
   <%= f.input :name %>
   <%= f.file_field :photo  %>
   <%= f.input :description %>

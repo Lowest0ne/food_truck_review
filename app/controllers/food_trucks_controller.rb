@@ -5,12 +5,13 @@ class FoodTrucksController < ApplicationController
 
   def create
     @food_truck = FoodTruck.new(food_truck_params)
+    @food_truck.user_id = current_user.id
     if @food_truck.save
       flash[:notice] = "You made a food truck"
       redirect_to food_truck_reviews_path(@food_truck)
     else
       flash[:notice] = "You failed to make a food truck"
-      render new_food_truck_path
+      render :new
     end
   end
 

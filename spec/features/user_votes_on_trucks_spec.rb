@@ -12,8 +12,8 @@ feature 'user votes on a truck', %Q{
   # I can see that I voted
 
   scenario 'user upvotes' do
-    user = FactoryGirl.create(:user)
-    truck = FactoryGirl.create(:food_truck)
+    user = FactoryGirl.create(:user_with_food_trucks)
+    truck = user.food_trucks.last
 
     prev_count = Vote.count
 
@@ -38,8 +38,8 @@ feature 'user votes on a truck', %Q{
 
   scenario 'user downvotes' do
 
-    user = FactoryGirl.create(:user)
-    truck = FactoryGirl.create(:food_truck)
+    user = FactoryGirl.create(:user_with_food_trucks)
+    truck = user.food_trucks.last
 
     prev_count = Vote.count
 

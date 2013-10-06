@@ -5,12 +5,14 @@ FoodTruckReview::Application.routes.draw do
 
   root 'pages#home'
 
-  resources :food_trucks, only: [:new, :create, :index, :show] do
+  resources :food_trucks, only: [:index] do
     resources :reviews, only: [:new, :create, :index ]
     resources :votes, only: [:new, :create ]
   end
 
-  resources :users, only: [:show, :update]
+  resources :users, only: [:show, :update] do
+    resources :food_trucks, only: [:new, :create]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -14,8 +14,8 @@ feature 'user reviews and rates a food truck', %Q{
   # I can optionally review the truck
 
   scenario 'user provides the required information' do
-    user = FactoryGirl.create(:user)
-    truck = FactoryGirl.create(:food_truck)
+    user = FactoryGirl.create(:user_with_food_trucks)
+    truck = user.food_trucks.last
 
     total_count = Review.count
     user_review_count = user.reviews.count
@@ -44,8 +44,8 @@ feature 'user reviews and rates a food truck', %Q{
   describe 'user does not provide the required information' do
     scenario 'User provides no information' do
 
-      user = FactoryGirl.create(:user)
-      truck = FactoryGirl.create(:food_truck)
+      user = FactoryGirl.create(:user_with_food_trucks)
+      truck = user.food_trucks.last
 
       prev_count = Review.count
       visit new_user_session_path
@@ -63,8 +63,8 @@ feature 'user reviews and rates a food truck', %Q{
     end
     scenario 'User provides body, but no is_good' do
 
-      user = FactoryGirl.create(:user)
-      truck = FactoryGirl.create(:food_truck)
+      user = FactoryGirl.create(:user_with_food_trucks)
+      truck = user.food_trucks.last
 
       prev_count = Review.count
       visit new_user_session_path
@@ -84,7 +84,8 @@ feature 'user reviews and rates a food truck', %Q{
     end
   end
   scenario 'User cancels making a review' do
-    truck = FactoryGirl.create(:food_truck)
+    user = FactoryGirl.create(:user_with_food_trucks)
+    truck = user.food_trucks.last
 
     visit food_truck_reviews_path(truck)
     click_on 'Add review'

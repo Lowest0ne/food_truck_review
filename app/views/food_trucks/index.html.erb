@@ -6,4 +6,6 @@
   <% end %>
 </ul>
 
-<%= link_to 'Add food truck', new_food_truck_path %>
+<% if current_user %>
+  <%= link_to 'Add food truck', new_user_food_truck_path(current_user) %>
+<% end %>

@@ -2,11 +2,13 @@
   <h1><%= "#{@food_truck.name}'s Reviews" %></h1>
 <% end %>
 
+<%= image_tag @food_truck.photo.url %>
+
 <table>
   <tr>
     <th>User name</th>
     <th>Sweet Review</th>
-    <th>Is Good</th>
+    <th>Verdict</th>
   </tr>
   <% @reviews.each do |review| %>
   <tr>

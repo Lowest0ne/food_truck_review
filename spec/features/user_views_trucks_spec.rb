@@ -4,7 +4,7 @@ feature 'user views trucks' do
 
   scenario 'all of the trucks are listed' do
 
-    FactoryGirl.create_list(:food_truck, 5)
+    FactoryGirl.create_list(:user_with_food_trucks, 5)
 
     visit food_trucks_path
 

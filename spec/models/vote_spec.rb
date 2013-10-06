@@ -6,10 +6,10 @@ describe Vote do
 
   describe "uniqueness" do
     it "can only have one vote per truck" do
-      
-      first_vote = FactoryGirl.create(:vote)
-      second_vote = FactoryGirl.build(:vote, user: first_vote.user, 
-        food_truck: first_vote.food_truck)
+      user = FactoryGirl.create(:user_with_food_trucks)
+
+      first_vote = FactoryGirl.create(:vote, user: user, food_truck: user.food_trucks.first)
+      second_vote = FactoryGirl.build(:vote, user: user, food_truck: user.food_trucks.first)
       expect(second_vote).to_not be_valid
     end
   end

@@ -17,7 +17,9 @@ feature 'user adds a foodtruck to be reviewed', %Q{
 # If I do provide the info, I am brought to the truck's page
 
 
-  scenario 'User creates successfully a foodtruck with correct info' do
+  scenario 'with correct info' do
+    user = FactoryGirl.create(:user)
+    sign_in(user)
 
     food_truck_count = FoodTruck.count
     visit food_trucks_path
@@ -36,9 +38,11 @@ feature 'user adds a foodtruck to be reviewed', %Q{
   end
 
  scenario 'User fails to make a foodtruck' do
-
+    user = FactoryGirl.create(:user)
+    sign_in(user)
     food_truck_count = FoodTruck.count
-    visit new_food_truck_path
+    
+    visit new_user_food_truck_path(user)
     click_on 'Create Food truck'
     expect(FoodTruck.count).to eql(food_truck_count)
 
@@ -46,11 +50,11 @@ feature 'user adds a foodtruck to be reviewed', %Q{
   end
 
   scenario 'User cancels making a foodtruck' do
-
-    truck = FactoryGirl.create(:food_truck)
+    user = FactoryGirl.create(:user_with_food_trucks)
+    truck = user.food_trucks.last
 
     food_truck_count = FoodTruck.count
-    visit new_food_truck_path
+    visit new_user_food_truck_path(user)
     click_on 'Cancel'
     expect(FoodTruck.count).to eql(food_truck_count)
 

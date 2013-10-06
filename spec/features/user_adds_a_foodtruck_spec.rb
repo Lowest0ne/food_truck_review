@@ -24,11 +24,9 @@ feature 'user adds a foodtruck to be reviewed', %Q{
 
     click_on 'Add food truck'
     fill_in 'Name', with: 'Chicken and Rice'
-    fill_in 'City', with: 'Boston'
-
-    fill_in 'Picture', with: 'some picture here'
-    fill_in 'Food category', with: 'chicken and rice'
+    page.attach_file('food_truck_photo', Rails.root + 'spec/support/images/image.jpg')
     fill_in "Description", with: 'Best place'
+    
     click_on 'Create Food truck'
     expect(FoodTruck.count).to eql(food_truck_count + 1)
 

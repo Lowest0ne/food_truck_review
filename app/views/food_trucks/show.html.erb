@@ -1,20 +1,9 @@
+<%= image_tag @food_truck.photo.url %>
+
 <p>
   <strong>Name:</strong>
   <%= @food_truck.name %>
 </p>
-<p>
-   <strong>City:</strong>
-  <%= @food_truck.city %>
-</p>
-<p>
- <strong>Picture:</strong>
-  <%= @food_truck.picture %>
-</p>
-<p>
-  <strong>Food Category:</strong>
-  <%= @food_truck.food_category %>
-</p>
-
 
 <%= link_to 'Back', new_food_truck_path %>
 

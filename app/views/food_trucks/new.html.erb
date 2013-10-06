@@ -1,10 +1,7 @@
 <%= simple_form_for @food_truck do |f| %>
   <%= f.input :name %>
-  <%= f.input :city %>
-  <%= f.input :picture  %>
+  <%= f.file_field :photo  %>
   <%= f.input :description %>
-  <%= f.input :food_category %>
-  <%= f.input :time_of_appearance %>
 
   <%= f.button :submit %>
 <% end %>

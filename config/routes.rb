@@ -1,6 +1,4 @@
 FoodTruckReview::Application.routes.draw do
-  get "votes/new"
-  get "vote/new"
   devise_for :users
 
   root 'pages#home'

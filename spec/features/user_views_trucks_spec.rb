@@ -21,15 +21,17 @@ feature 'user views trucks' do
     expect(page).to have_content('Next')
     expect(page).to have_content('Last')
 
-    expect(page).to have_content(FoodTruck.first.name)
-    expect(page).to_not have_content(FoodTruck.last.name)
+    food_trucks = FoodTruck.order(:name)
+
+    expect(page).to have_content(food_trucks.first.name)
+    expect(page).to_not have_content(food_trucks.last.name)
 
     click_link 'Last'
     expect(page).to have_content('First')
     expect(page).to have_content('Prev')
 
-    expect(page).to have_content(FoodTruck.last.name)
-    expect(page).to_not have_content(FoodTruck.first.name)
+    expect(page).to have_content(food_trucks.last.name)
+    expect(page).to_not have_content(food_trucks.first.name)
   end
 
 end

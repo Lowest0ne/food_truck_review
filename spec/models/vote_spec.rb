@@ -10,9 +10,21 @@ describe Vote do
 
   # pending 
   it 'can only have one vote per votable' do
-    first_vote = FactoryGirl.create(:vote)
-    second_vote = FactoryGirl.build(:vote, user: first_vote.user, food_truck: first_vote.food_truck)
-    expect(second_vote).to_not be_valid
+    user = FactoryGirl.create(:user_with_reviews)
+    review = user.reviews.first
+
+    vote = FactoryGirl.create( :vote, voteable: review, user: user )
+    vote = FactoryGirl.build( :vote, voteable: review, user: user )
+    vote.should_not be_valid
+
+    food_truck = FoodTruck.first
+
+    vote = FactoryGirl.build( :vote, voteable: food_truck, user: user )
+    vote.should be_valid
+    vote.save
+
+    vote = FactoryGirl.build( :vote, voteable: food_truck, user: user )
+    vote.should_not be_valid
   end
 
 end

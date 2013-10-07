@@ -14,7 +14,6 @@ describe Vote do
     review = user.reviews.first
 
     vote = FactoryGirl.create( :vote, voteable: review, user: user )
-
     vote = FactoryGirl.build( :vote, voteable: review, user: user )
     vote.should_not be_valid
 

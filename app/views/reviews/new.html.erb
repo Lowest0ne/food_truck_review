@@ -4,6 +4,7 @@
 
 <%= simple_form_for([@truck, @review]) do |f| %>
   <%= f.input :body %>
+  <%= f.collection_radio_buttons :voted_up, [[true, 'Good'], [false, 'Bad']], :first, :last %>
   <%= f.button :submit %>
 <% end %>
 

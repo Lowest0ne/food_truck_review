@@ -10,7 +10,7 @@ FactoryGirl.define do
     factory :user_with_reviews do
       after(:create) do |user|
         food_truck = FactoryGirl.create(:food_truck, user: user)
-        FactoryGirl.create_list(:review, 5, user: user, food_truck: food_truck)
+        FactoryGirl.create_list(:review, 2, user: user, food_truck: food_truck)
       end
     end
 
@@ -24,10 +24,10 @@ FactoryGirl.define do
   factory :food_truck do
     sequence(:name){|n|"food truck #{n}"}
     photo Rack::Test::UploadedFile.new(File.open(File.join( Rails.root, 'spec/support/images/image.jpg')))
-    
+
     factory :food_truck_with_reviews do
       after(:create) do |food_truck|
-        FactoryGirl.create_list(:review, 5, food_truck: food_truck )
+        FactoryGirl.create_list(:review, 2, food_truck: food_truck )
       end
     end
 

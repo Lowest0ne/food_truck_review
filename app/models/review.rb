@@ -30,6 +30,7 @@ class Review < ActiveRecord::Base
 
   def verdict
     vote = Vote.find_by( voteable_id: self.food_truck.id, voteable_type: 'FoodTruck' )
+    return 'nil' unless vote
     vote.voted_up == true ? 'I like' : 'I do not like'
   end
 end

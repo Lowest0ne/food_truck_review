@@ -33,7 +33,6 @@ feature 'user adds a foodtruck to be reviewed', %Q{
     expect(FoodTruck.count).to eql(food_truck_count + 1)
 
     expect(page).to have_content("You made a food truck")
-
     expect(page).to have_content("Add review")
   end
 
@@ -46,7 +45,7 @@ feature 'user adds a foodtruck to be reviewed', %Q{
     click_on 'Create Food truck'
     expect(FoodTruck.count).to eql(food_truck_count)
 
-     expect(page).to have_content("You failed to make a food truck")
+    expect(page).to have_content("You failed to make a food truck")
   end
 
   scenario 'User cancels making a foodtruck' do

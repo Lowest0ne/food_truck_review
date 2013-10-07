@@ -10,14 +10,9 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name
   validates_presence_of :last_name
 
-  has_many :reviews,
-    inverse_of: :user
-
-  has_many :votes,
-    inverse_of: :user
-
-  has_many :food_trucks,
-    inverse_of: :user
+  has_many :reviews,     inverse_of: :user
+  has_many :votes,       inverse_of: :user
+  has_many :food_trucks, inverse_of: :user
 
   def full_name
     "#{first_name} #{last_name}"

@@ -1,4 +1,4 @@
-<%= simple_form_for([@truck, @vote]) do |f| %>
+<%= simple_form_for([@findable, @vote]) do |f| %>
   <%= f.collection_radio_buttons :voted_up, [[true, 'Up'], [false, 'Down']], :first, :last %>
   <%= f.button :submit %>
 <% end %>

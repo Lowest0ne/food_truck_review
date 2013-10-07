@@ -29,7 +29,6 @@ feature 'user reviews and rates a food truck', %Q{
     click_on "Add review"
 
     fill_in 'Body', with: 'Totally awesome!'
-    choose 'Good'
 
     click_on 'Create Review'
 
@@ -59,27 +58,6 @@ feature 'user reviews and rates a food truck', %Q{
 
       expect(Review.count).to eql(prev_count)
       expect(page).to have_content("can't be blank")
-
-    end
-    scenario 'User provides body, but no is_good' do
-
-      user = FactoryGirl.create(:user_with_food_trucks)
-      truck = user.food_trucks.last
-
-      prev_count = Review.count
-      visit new_user_session_path
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-      click_button 'Sign In'
-
-      visit new_food_truck_review_path(truck)
-
-      fill_in 'Body', with: 'SOOOOO GOOOD'
-
-      click_on 'Create Review'
-
-      expect(Review.count).to eql(prev_count)
-      expect(page).to have_content("must be filled")
 
     end
   end

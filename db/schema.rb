@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131006200329) do
+ActiveRecord::Schema.define(version: 20131006234603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20131006200329) do
     t.text     "body",                               null: false
     t.integer  "user_id",                            null: false
     t.integer  "food_truck_id",                      null: false
-    t.boolean  "is_good",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "state",         default: "complete", null: false
@@ -56,13 +55,12 @@ ActiveRecord::Schema.define(version: 20131006200329) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: true do |t|
-    t.integer  "user_id",       null: false
-    t.integer  "food_truck_id", null: false
-    t.boolean  "voted_up",      null: false
+    t.integer  "user_id",                             null: false
+    t.boolean  "voted_up",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "voteable_id",   default: 0,           null: false
+    t.string   "voteable_type", default: "FoodTruck", null: false
   end
-
-  add_index "votes", ["user_id", "food_truck_id"], name: "index_votes_on_user_id_and_food_truck_id", unique: true, using: :btree
 
 end

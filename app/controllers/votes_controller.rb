@@ -1,18 +1,38 @@
 class VotesController < ApplicationController
   def new
     @vote = Vote.new
-    @truck = FoodTruck.find(params[:food_truck_id])
+
+    if params[:food_truck_id]
+      @findable = FoodTruck.find(params[:food_truck_id])
+    elsif params[:review_id]
+      @findable = Review.find(params[:review_id])
+    end
+
   end
 
   def create
     @vote = Vote.new(vote_params)
     @vote.user_id = current_user.id
-    @truck = FoodTruck.find(params[:food_truck_id])
-    @vote.food_truck_id = @truck.id
+
+    if params[:food_truck_id]
+      @vote.voteable_type = 'FoodTruck'
+      @vote.voteable_id = params[:food_truck_id]
+    elsif params[:review_id]
+      @vote.voteable_type = 'Review'
+      @vote.votebale_id = params[:review_id]
+    end
 
     if @vote.save
       flash[:notice] = "You voted successfully"
-      redirect_to new_food_truck_vote_path(@truck)
+
+      if params[:food_truck_id]
+        redirect_to food_trucks_path
+      elsif params[:review_id]
+        review = Review.find( params[:review_id] )
+
+        redirect_to food_truck_reviews( review.food_truck )
+      end
+    
     else
       render :new
     end

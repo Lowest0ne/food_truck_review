@@ -32,7 +32,7 @@ feature 'user votes on a truck', %Q{
     expect(Vote.last.voted_up).to eql(true)
 
     expect(Vote.last.user_id).to eql(user.id)
-    expect(Vote.last.food_truck_id).to eql(truck.id)
+    expect(Vote.last.voteable_id).to eql(truck.id)
 
   end  
 
@@ -60,6 +60,6 @@ feature 'user votes on a truck', %Q{
     expect(Vote.last.voted_up).to eql(false)
 
     expect(Vote.last.user_id).to eql(user.id)
-    expect(Vote.last.food_truck_id).to eql(truck.id)
+    expect(Vote.last.voteable_id).to eql(truck.id)
   end
 end

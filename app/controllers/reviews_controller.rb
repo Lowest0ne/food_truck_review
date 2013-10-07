@@ -32,8 +32,7 @@ class ReviewsController < ApplicationController
   protected
   def review_params
     params.require(:review).permit(
-      :body,
-      :is_good
+      :body
       )
   end
 

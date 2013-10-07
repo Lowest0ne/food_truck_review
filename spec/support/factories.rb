@@ -35,7 +35,6 @@ FactoryGirl.define do
 
   factory :review do
     sequence(:body){|n|"I like it!#{n}"}
-    is_good true
   end
 
   factory :vote do

@@ -20,7 +20,7 @@ class FoodTrucksController < ApplicationController
   end
 
   def index
-    @food_trucks = FoodTruck.all
+    @food_trucks = FoodTruck.order("name").page(params[:page]).per(5)
   end
 
   private

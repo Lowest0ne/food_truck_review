@@ -1,5 +1,6 @@
 <h1>All the food trucks</h1>
-
+<%= paginate @food_trucks %>
+<br />
 <ul>
   <% @food_trucks.each do |food_truck| %>
     <li><%= link_to food_truck.name, food_truck_reviews_path(food_truck)%></li>

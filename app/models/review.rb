@@ -29,6 +29,7 @@ class Review < ActiveRecord::Base
   accepts_nested_attributes_for :votes
 
   def verdict
-    binding.pry
+    vote = Vote.find_by( voteable_id: self.food_truck.id, voteable_type: 'FoodTruck' )
+    vote.voted_up == true ? 'I like' : 'I do not like'
   end
 end

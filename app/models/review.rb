@@ -1,4 +1,7 @@
 class Review < ActiveRecord::Base
+
+  attr_accessor :voted_up
+
   validates_presence_of :state
   validates_presence_of :food_truck
   validates_presence_of :user
@@ -21,5 +24,13 @@ class Review < ActiveRecord::Base
     event :flag do
       transition completed: :flagged
     end
+  end
+
+  accepts_nested_attributes_for :votes
+
+  def verdict
+    vote = Vote.find_by( voteable_id: self.food_truck.id, voteable_type: 'FoodTruck' )
+    return 'nil' unless vote
+    vote.voted_up == true ? 'I like' : 'I do not like'
   end
 end

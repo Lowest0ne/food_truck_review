@@ -12,6 +12,8 @@ class ReviewsController < ApplicationController
     @review.food_truck_id = @truck.id
 
     if @review.save
+      Vote.create( voted_up: @review.voted_up, user: current_user, voteable: @truck)
+
       flash[:notice] = 'Review is created successfully'
       redirect_to food_truck_reviews_path(@truck)
     else
@@ -32,7 +34,8 @@ class ReviewsController < ApplicationController
   protected
   def review_params
     params.require(:review).permit(
-      :body
+      :body,
+      :voted_up
       )
   end
 

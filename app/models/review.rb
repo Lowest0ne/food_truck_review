@@ -7,10 +7,15 @@ class Review < ActiveRecord::Base
   validates_presence_of :user
   validates_presence_of :body
 
-  has_many :votes, as: :voteable, inverse_of: :voteable
+  has_many :votes,
+    as: :voteable,
+    inverse_of: :voteable
 
-  belongs_to :user,       inverse_of: :reviews
-  belongs_to :food_truck, inverse_of: :reviews
+  belongs_to :user,
+    inverse_of: :reviews
+
+  belongs_to :food_truck,
+    inverse_of: :reviews
 
   state_machine :state, initial: :pending do
     state :pending

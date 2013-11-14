@@ -1,4 +1,5 @@
 class FoodTrucksController < ApplicationController
+
   def new
     @food_truck = FoodTruck.new
   end
@@ -28,4 +29,5 @@ class FoodTrucksController < ApplicationController
   def food_truck_params
     params.require(:food_truck).permit(:name, :photo, :description)
   end
+
 end

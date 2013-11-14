@@ -13,10 +13,7 @@ class UsersController < ApplicationController
       flash[:alert] = 'Please provide a photo'
       render :show
     end
-
-
   end
-
 
   def user_params
     params.require(:user).permit(:photo)

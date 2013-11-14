@@ -2,10 +2,9 @@
   <%= content_tag :p, error %>
 <% end %>
 
-<%= simple_form_for([@truck, @review]) do |f| %>
-  <%= f.input :body %>
-  <%= f.collection_radio_buttons :voted_up, [[true, 'Good'], [false, 'Bad']], :first, :last %>
-  <%= f.button :submit %>
-<% end %>
 
-<%= link_to 'Cancel', food_truck_reviews_path(@truck) %>
+<% if current_user %>
+  <%= render partial: 'form', locals: { food_truck: @food_truck, review: @review }  %>
+<% else %>
+  <p>You must <%= link_to 'sign in', new_user_session_path %> to create a review</p>
+<% end %>

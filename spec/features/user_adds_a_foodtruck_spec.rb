@@ -28,7 +28,7 @@ feature 'user adds a foodtruck to be reviewed', %Q{
     fill_in 'Name', with: 'Chicken and Rice'
     page.attach_file('food_truck_photo', Rails.root + 'spec/support/images/image.jpg')
     fill_in "Description", with: 'Best place'
-    
+
     click_on 'Create Food truck'
     expect(FoodTruck.count).to eql(food_truck_count + 1)
 
@@ -40,7 +40,7 @@ feature 'user adds a foodtruck to be reviewed', %Q{
     user = FactoryGirl.create(:user)
     sign_in(user)
     food_truck_count = FoodTruck.count
-    
+
     visit new_user_food_truck_path(user)
     click_on 'Create Food truck'
     expect(FoodTruck.count).to eql(food_truck_count)

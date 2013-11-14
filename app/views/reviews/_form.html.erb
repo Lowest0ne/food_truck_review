@@ -1,0 +1,11 @@
+<% review.errors.full_messages.each do | error | %>
+  <%= content_tag :p, error %>
+<% end %>
+
+<%= simple_form_for([food_truck, review]) do |f| %>
+  <p><%= f.input :body, input_html: {style: 'width: 500px'} %></p>
+  <%= f.collection_radio_buttons :voted_up, [[true, 'Up'], [false, 'Down']], :first, :last %>
+  <p><%= f.button :submit %></p>
+<% end %>
+
+<%= link_to 'Cancel', food_truck_reviews_path( food_truck) %>

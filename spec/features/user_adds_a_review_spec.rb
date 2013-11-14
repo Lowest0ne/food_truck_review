@@ -13,23 +13,26 @@ feature 'user reviews and rates a food truck', %Q{
   # The new stats are visible on the screen
   # I can optionally review the truck
 
+  let (:user){ FactoryGirl.create(:user_with_food_trucks ) }
+
+  before ( :each ) do
+    visit new_user_session_path
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign In'
+  end
+
   scenario 'user provides the required information' do
-    user = FactoryGirl.create(:user_with_food_trucks)
     truck = user.food_trucks.last
 
     total_count = Review.count
     user_review_count = user.reviews.count
 
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
-
     click_on truck.name
     click_on "Add review"
 
     fill_in 'Body', with: 'Totally awesome!'
-    choose 'Good'
+    choose 'Up'
 
     click_on 'Create Review'
 
@@ -44,14 +47,9 @@ feature 'user reviews and rates a food truck', %Q{
   describe 'user does not provide the required information' do
     scenario 'User provides no information' do
 
-      user = FactoryGirl.create(:user_with_food_trucks)
       truck = user.food_trucks.last
 
       prev_count = Review.count
-      visit new_user_session_path
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-      click_button 'Sign In'
 
       visit new_food_truck_review_path(truck)
 
@@ -63,7 +61,6 @@ feature 'user reviews and rates a food truck', %Q{
     end
   end
   scenario 'User cancels making a review' do
-    user = FactoryGirl.create(:user_with_food_trucks)
     truck = user.food_trucks.last
 
     visit food_truck_reviews_path(truck)
@@ -72,7 +69,5 @@ feature 'user reviews and rates a food truck', %Q{
 
     expect(page).to have_content(truck.name)
   end
-
-
 
 end

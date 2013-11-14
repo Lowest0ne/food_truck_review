@@ -1,9 +1,9 @@
-<%= simple_form_for [current_user, @food_truck] do |f| %>
-  <%= f.input :name %>
-  <%= f.file_field :photo  %>
-  <%= f.input :description %>
-
-  <%= f.button :submit %>
-<% end %>
-
-<%= link_to 'Cancel', food_trucks_path %>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="form-padding">
+      <%= render partial: 'form',
+                 locals: { user: current_user, food_truck: @food_truck } %>
+    </div>
+    <%= link_to 'Cancel', food_trucks_path %>
+  </div>
+</div>

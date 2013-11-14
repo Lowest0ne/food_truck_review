@@ -3,9 +3,9 @@ class VotesController < ApplicationController
     @vote = Vote.new
 
     if params[:food_truck_id]
-      @findable = FoodTruck.find(params[:food_truck_id])
+      @voteable = FoodTruck.find(params[:food_truck_id])
     elsif params[:review_id]
-      @findable = Review.find(params[:review_id])
+      @voteable = Review.find(params[:review_id])
     end
 
   end
@@ -32,7 +32,7 @@ class VotesController < ApplicationController
 
         redirect_to food_truck_reviews( review.food_truck )
       end
-    
+
     else
       render :new
     end
@@ -40,8 +40,6 @@ class VotesController < ApplicationController
 
   protected
   def vote_params
-    params.require(:vote).permit(
-      :voted_up
-      )
+    params.require(:vote).permit( :voted_up )
   end
 end

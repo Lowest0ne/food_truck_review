@@ -1,4 +1,5 @@
 class FoodTrucksController < ApplicationController
+
   def new
     @food_truck = FoodTruck.new
   end
@@ -20,7 +21,7 @@ class FoodTrucksController < ApplicationController
   end
 
   def index
-    @food_trucks = FoodTruck.order("name").page(params[:page]).per(5)
+    @food_trucks = FoodTruck.order("id").page(params[:page]).per(5)
   end
 
   private
@@ -28,4 +29,5 @@ class FoodTrucksController < ApplicationController
   def food_truck_params
     params.require(:food_truck).permit(:name, :photo, :description)
   end
+
 end

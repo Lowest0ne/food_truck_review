@@ -29,6 +29,7 @@ feature 'user reviews and rates a food truck', %Q{
     click_on "Add review"
 
     fill_in 'Body', with: 'Totally awesome!'
+    save_and_open_page
     choose 'Good'
 
     click_on 'Create Review'

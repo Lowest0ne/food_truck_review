@@ -12,3 +12,6 @@
  *= require foundation_and_overrides
  *= require_tree .
  */
+ .top-links {
+  padding-top: 5px;
+ }

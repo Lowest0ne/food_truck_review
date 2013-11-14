@@ -1,12 +1,15 @@
 <h1>All the food trucks</h1>
+
+<br />
+
+  <% @food_trucks.each do |food_truck| %>
+    <div class="food_truck_<%= food_truck.id %>">
+      <p><%= link_to food_truck.name, food_truck_reviews_path(food_truck)%><p>
+    </div>
+  <% end %>
+
 <%= paginate @food_trucks %>
 <br />
-<ul>
-  <% @food_trucks.each do |food_truck| %>
-    <li><%= link_to food_truck.name, food_truck_reviews_path(food_truck)%></li>
-  <% end %>
-</ul>
-
 <% if current_user %>
-  <%= link_to 'Add food truck', new_user_food_truck_path(current_user) %>
+  <h5><%= link_to 'Add food truck', new_user_food_truck_path(current_user) %></h5>
 <% end %>

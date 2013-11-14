@@ -8,7 +8,6 @@ describe Vote do
   it { should belong_to(:voteable) }
   it { should belong_to(:user )}
 
-  # pending 
   it 'can only have one vote per votable' do
     user = FactoryGirl.create(:user_with_reviews)
     review = user.reviews.first

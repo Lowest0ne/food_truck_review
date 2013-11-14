@@ -22,25 +22,44 @@
   </head>
 
   <body>
-    <nav>
-      <% if user_signed_in? %>
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-        <%= link_to 'My Profile', user_path(current_user) %>
-      <% else %>
-        <%= link_to 'Sign Up', new_user_registration_path %>
-        <%= link_to 'Sign In', new_user_session_path %>
+    <div class="row">
+      <div class="large-12 columns">
+        <nav class="top-bar">
+          <ul class="title-area">
+            <li class="name">
+              <h1><a href="#">Food Truck Review </a></h1>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
-      <% end %>
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="right top-links">
+          <% if user_signed_in? %>
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+            <%= link_to 'My Profile', user_path(current_user) %>
+          <% else %>
+            <%= link_to 'Sign Up', new_user_registration_path %>
+            <%= link_to 'Sign In', new_user_session_path %>
+          <% end %>
+        </ul>
+        <ul class="left top-links">
+          <%= link_to 'Food Trucks!', food_trucks_path %>
+        </ul>
+      </div>
+    </div>
 
-      <%= link_to 'Food Trucks!', food_trucks_path %>
-    </nav>
+    <div class="row">
+      <div class="large-12 columns">
+        <%= content_tag :div, flash[:notice], class: 'notice' %>
+        <%= content_tag :div, flash[:alert], class: 'alert' %>
 
-    <%= content_tag :div, flash[:notice], class: 'notice' %>
-    <%= content_tag :div, flash[:alert], class: 'alert' %>
+        <%= yield %>
 
-    <%= yield %>
-
-
+      </div>
+    </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

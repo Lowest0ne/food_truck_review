@@ -20,3 +20,10 @@
 # Ignore the images we upload ( since the folder they are in is specific to
 # our database )
 /public/uploads
+
+# if putting the file in this folder is what works, we should be able to keep track.
+# Ignore factories.rb in spec folder (This is to resolve an issue with accessing factories locally. )
+#/spec/factories.rb
+
+# ignore schema
+db/schema.rb

@@ -8,3 +8,23 @@
 * Carl Schwope
 * Kevin Sun
 * Beth Tenorio
+
+=== Ruby and Rails version
+
+* Rails 4.0.0
+* Ruby 2.0.0
+
+=== Database
+
+* PostgreSQL 9.2.4
+
+=== Test suite
+
+* Rspec 2.14
+
+=== How to use
+
+1. run ‘git clone github.com/anaerobeth/building-manager.git’
+2. checkout 'styles' branch
+3. run ‘bundle’
+4. copy config/database.example.yml to config/database.yml

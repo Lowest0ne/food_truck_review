@@ -1,6 +1,6 @@
 <%= simple_form_for([voteable, vote]) do |f| %>
   <%= f.collection_radio_buttons :voted_up, [[true, 'Up'], [false, 'Down']], :first, :last %>
-  <%= f.button :submit %>
+  <%= f.submit %>
 <% end %>
 
 

@@ -4,9 +4,8 @@
 
 <%= simple_form_for([food_truck, review]) do |f| %>
   <p><%= f.input :body, input_html: {style: 'width: 500px'} %></p>
-  <p><%= render partial: '/votes/form', locals: { voteable: food_truck,
-                                                  vote: food_truck.votes.build } %>
+  <%= f.collection_radio_buttons :voted_up, [[true, 'Up'], [false, 'Down']], :first, :last %>
   <p><%= f.button :submit %></p>
 <% end %>
 
-<%= link_to 'Cancel', food_truck_reviews_path(@truck) %>
+<%= link_to 'Cancel', food_truck_reviews_path( food_truck) %>

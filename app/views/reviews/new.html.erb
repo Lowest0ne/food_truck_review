@@ -1,13 +1,12 @@
 <% @review.errors.full_messages.each do | error | %>
   <%= content_tag :p, error %>
 <% end %>
+
+
 <% if current_user %>
-  <%= simple_form_for([@truck, @review]) do |f| %>
-    <p><%= f.input :body, input_html: {style: 'width: 500px'} %></p>
-    <p><%= f.button :submit %></p>
-  <% end %>
+  <%= render partial: 'form', locals: { food_truck: @food_truck, review: @review }  %>
 <% else %>
-<p>You must <%= link_to 'sign in', new_user_session_path %> to create a review</p>
+  <p>You must <%= link_to 'sign in', new_user_session_path %> to create a review</p>
 <% end %>
 
 <%= link_to 'Cancel', food_truck_reviews_path(@truck) %>

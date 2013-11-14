@@ -1,0 +1,7 @@
+<%= simple_form_for [ user, food_truck] do |f| %>
+  <p><%= f.input :name, input_html: {style: 'width: 500px'} %></p>
+  <%= f.file_field :photo  %>
+  <p><%= f.input :description, input_html: {style: 'width: 500px'} %></p>
+
+  <%= f.button :submit %>
+<% end %>

@@ -1,13 +1,8 @@
 <div class="row">
   <div class="large-12 columns">
     <div class="form-padding">
-    <%= simple_form_for [current_user, @food_truck] do |f| %>
-      <p><%= f.input :name, input_html: {style: 'width: 500px'} %></p>
-      <%= f.file_field :photo  %>
-      <p><%= f.input :description, input_html: {style: 'width: 500px'} %></p>
-
-      <%= f.button :submit %>
-    <% end %>
+      <%= render partial: 'form',
+                 locals: { user: current_user, food_truck: @food_truck } %>
     </div>
     <%= link_to 'Cancel', food_trucks_path %>
   </div>

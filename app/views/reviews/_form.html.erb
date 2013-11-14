@@ -1,0 +1,12 @@
+<% review.errors.full_messages.each do | error | %>
+  <%= content_tag :p, error %>
+<% end %>
+
+<%= simple_form_for([food_truck, review]) do |f| %>
+  <p><%= f.input :body, input_html: {style: 'width: 500px'} %></p>
+  <p><%= render partial: '/votes/form', locals: { voteable: food_truck,
+                                                  vote: food_truck.votes.build } %>
+  <p><%= f.button :submit %></p>
+<% end %>
+
+<%= link_to 'Cancel', food_truck_reviews_path(@truck) %>
